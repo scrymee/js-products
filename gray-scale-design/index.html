@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>グレースケールくん</title>
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css" integrity="sha384-Bfad6CLCknfcloXFOyFnlgtENryhrpZCe29RTifKEixXQZ38WheV+i/6YWSzkz3V" crossorigin="anonymous">   
+        <script src="script.js" defer></script>
+    </head>
+    <body>
+        <div class="upload-container">
+            <h1><i class="fas fa-robot"></i>Gray Scale tool</h1>
+            <p class="caption">When you change File Image to gray, you upload the file. And you click Change Button </p>
+            <div class="tools">
+                <label for="upload" class="btn">
+                    <i class="fas fa-upload"></i>Upload
+                    <input type="file" id="upload">
+                </label>
+                <button id="graybtn" class="btn">
+                    <i class="fas fa-exchange-alt"></i>Change</button>
+            </div>
+            <div class="files">
+                <h3><i class="fas fa-upload"></i>Uploaded File</h3>
+                <canvas id="uploaded" class="thumb"></canvas>
+                <h3><i class="fas fa-exchange-alt"></i>GrayScale File</h3>
+                <canvas id="gray" class="thumb"></canvas>
+            </div>
+        </div>
+
+    </body>
+</html>

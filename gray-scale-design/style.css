@@ -1,0 +1,89 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;  
+    background-color: #f5f5f5;
+    margin: 0;
+    font-family: "Poppins", sans-serif;
+}
+
+
+.upload-container {
+    width: 600px;
+    margin: 1rem;
+    padding: 1rem 2rem 3rem;
+    background-color: #fff;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+    border-radius: 10px;  
+    overflow: hidden;
+}
+
+h1 {
+    text-align: center;
+    font-weight: bold;
+    color: rgb(65, 63, 63);
+    font-family: inherit;
+}
+
+.caption {
+    color: rgb(19, 76, 95);
+}
+
+h3 {
+    font-weight: bold;
+}
+
+.upload-container .tools {
+}
+
+.upload-container .files {
+}
+
+.thumb {
+    background-color:rgba(0, 0, 0, 0.1);
+    border: 3px dashed #666;
+    width: 100%;
+}
+
+
+.tools {
+    display: flex;
+    justify-content: space-between; 
+}
+
+.tools button, .tools label {
+    width: 220px;
+    text-align: center;
+    font-family: inherit;
+    background-color: tomato;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.6);
+    border: none;
+    padding: 0.8rem 1rem;    
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 1rem;
+}
+
+.tools button:hover, .tools label:hover {
+    background-color: #fff;
+    border: 1px solid tomato;
+    color:  tomato;
+
+}
+
+.fas {
+    margin-right: 5px;
+}
+
+.tools #upload {
+    display: none;
+}
