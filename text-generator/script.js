@@ -1,20 +1,18 @@
 
 const generateBtn = document.getElementById('generate');
-const commentTitleEl = document.getElementById('comment-title');
-const commentMsgEl = document.getElementById('comment-msg');
+const articleTitleEls = document.querySelectorAll('.title');
+const articleMsgEls = document.querySelectorAll('.description');
 
-const exampleData = 
-[
-    {
-        "name": "hara-chan",
-        "msg" : "やっほー"
-    },
-    {
-        "name": "砂糖-chan",
-        "msg" : "やっほー"
-    },
-]
+const article = document.getElementById('article-body');
 
+const sectionCount = 5
+
+const descLength = Math.floor(Math.random() * 2) + 1;
+
+const descCount = Math.floor(Math.random() * 2) + 1;
+
+const minLength = 1;
+const maxLength = 250;
 
 
 const catchcopy = [
@@ -217,36 +215,72 @@ const discuss = [
 ];
 
 
+createArticle();
 
 generateBtn.addEventListener('click', () => {
+    article.innerHTML = "";
+    //loopで同じ変数iを使うとバグる？
     
-    const title = catchcopy[randomindex(catchcopy)] +"、"+ noum[randomindex(noum)] + headlines[randomindex(headlines)]; 
-    commentTitleEl.innerText = title;
-    commentTitleEl.addEventListener('click', () => {
-        copyClipboard(title);
-        document.getElementById('flash').innerText ='copied';
-    })
-
-    const msg = 
-            settingText(noum[randomindex(noum)])
-            + "。"
-            + settingText(getArrayText(noum))
-            + getArrayText(close)
-            + getArrayText(emotion)
-            + getArrayText(closeFriendly)
-            + conjunction[randomindex(conjunction)]
-            + "、"
-            + discuss[randomindex(discuss)]
-            + getArrayText(closeFriendly)
-            + settingText(noum[randomindex(noum)]);
-
-            insert(commentMsgEl, msg);
-
-
-
-    console.log('この場所には○○文字以内のテキストが入ります。')
-    console.log('あなたにおすすめの' +noum[randomindex(noum)] + "100選")
+    for (k = 0; k <= sectionCount; k++) {
+        createArticle();
+    }
 })
+
+
+function createArticle() {
+
+
+    const section = document.createElement('div');
+    section.classList.add('section');
+    //create Title
+    const articleTitle = catchcopy[randomindex(catchcopy)] +"、"+ noum[randomindex(noum)] + headlines[randomindex(headlines)]; 
+    const title = document.createElement('h3');
+    title.classList.add('title');
+    title.classList.add('fade')
+    setTimeout(() => {
+        title.classList.remove('fade')
+    }, 500)
+    title.innerText = articleTitle;
+    section.appendChild(title);
+    title.addEventListener('click', () => {
+        copyClipboard(articleTitle);
+    })
+    //create description
+    let articleMsg = "";    
+    for(i =0; i< descLength; i++) {
+        addMsg = 
+                settingText(noum[randomindex(noum)])
+                + "。"
+                + settingText(getArrayText(noum))
+                + getArrayText(close)
+                + getArrayText(emotion)
+                + getArrayText(closeFriendly)
+                + conjunction[randomindex(conjunction)]
+                + "、"
+                + discuss[randomindex(discuss)]
+                + getArrayText(closeFriendly)
+                + settingText(noum[randomindex(noum)])
+                + "。";
+        if(articleMsg.length + addMsg.length > maxLength){
+            break;
+        }
+        articleMsg += addMsg;
+        }
+    const description = document.createElement('p');
+    description.classList.add('description');
+    description.classList.add('fade')
+    setTimeout(() => {
+        description.classList.remove('fade')
+    }, 500)
+    description.innerText = articleMsg;
+    section.appendChild(description);
+    description.addEventListener('click', () => {
+        copyClipboard(articleMsg);
+    })
+    article.appendChild(section)
+}
+
+
 
 function getArrayText(ary) {
     return ary[randomindex(ary)];
@@ -266,14 +300,19 @@ function copyClipboard(text) {
     navigator.clipboard.writeText(text).then(
         // ()=>alert("クリップボードにコピーしました"),
         // ()=>alert("クリップボードにコピーできませんでした")
+        () => {
+            createFlash('copied:' + text.length);
+        }
     );
 }
 
-function insert(el, msg) {
-    el.innerText = msg;
-    el.addEventListener('click', () => {
-        copyClipboard(msg);
-        document.getElementById('flash').innerText ='copied';
-    })
+function createFlash(text) {
+    const flash = document.createElement('div');
+    flash.classList.add('flash')
+    flash.innerText = text;
+    document.body.appendChild(flash);
+    setTimeout(() => {
+        flash.remove()
+    }, 1500)
 }
 

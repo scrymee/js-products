@@ -9,45 +9,31 @@
     </head>
     <body>
         <div class="container">
-               <!-----------> 
             <div class="result">
-                <div class="comment content">
-                    <p class="title" id="comment-title">閲覧する！</p>
-                    <button class="hidden copy">Copy</button>
-                    <p class="description" id="comment-msg">
-                        あなたはいつも面白いですね☺️
-                    </p>
-                </div>
-               <!-----------> 
-
                <!-----------> 
                 <div class="article content">
-                    <p class="title">世界の有名な地名ランキング10選</p>
-                    <p class="article-body">
-                        <h3>世界には魅力的な街並みがいっぱい！</h3>
-                        <p class="article-text">
-                            あかりの灯った情緒ある夜のまちなみ、まちを明るくするライトアップされた建物など、北九州市の魅力的な夜間景観をとらえた写真を募集します。
-                        </p>
-                        <h3>世界には魅力的な街並みがいっぱい！</h3>
-                        <p class="article-text">
-                            あかりの灯った情緒ある夜のまちなみ、まちを明るくするライトアップされた建物など、北九州市の魅力的な夜間景観をとらえた写真を募集します。
-                        </p>
-                    </p>
+                    <p class="">世界の有名な地名ランキング10選</p>
+                    <div class="article-body" id="article-body">
+                    </div>
                 </div>
                <!-----------> 
             </div>
             <div class="tools">
                 <select name="example">
-                    <option value="サンプル1">サンプル1</option>
-                    <option value="サンプル2">サンプル2</option>
-                    <option value="サンプル3">サンプル3</option>
+                    <option value="サンプル1">コメント</option>
+                    <option value="サンプル2">記事風</option>
                 </select>
+                <label for="maxLength">
+                    最大文字数
+                    <input type="number" name="" id="maxLength" value=250>
+                </label>
                 <label for="emoji">
                     <input type="checkbox" name="" id="emoji">
                     絵文字を含む
                 </label>
+                <p class="caption">Generateボタンをクリックすると自動で文字が出力されます。</p>
+                <p class="caption">見出しや本文をクリックすると、自動でクリップボードにコピーされます。</p>
                 <button class="btn-generate" id="generate">Generate!!</button>
-                <p class="flash" id="flash">Status</p>
             </div>
 
         </div>
