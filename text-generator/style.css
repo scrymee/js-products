@@ -65,6 +65,17 @@ h3 {
     line-height: 2.2rem;
 }
 
+.btn {
+    border: none;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 3px 3px 10px -1px rgba(0,0,0,0.3);
+    padding: 0.5rem 1rem;
+    cursor: pointer;
+    text-align: center;
+    font-size: 1.2rem;
+}
+
 .description {
     font-size: 1.2rem;
     line-height: 2rem;
@@ -79,27 +90,37 @@ h3 {
     right: 0;
     display: flex;
     flex-direction: column;
+    align-items: center;
     padding: 2rem;
+    font-size: 1.2rem;
 }
 
 .tools * {
     margin: 1rem 0;
+    width: 100%;
 }
 
 .tools select , .tools input {
     padding: 1rem;
     font-size: 1.2rem;
-    
 }
 
+.tools input[type="checkbox"] {
+    display: none;
+}
+.tools input[type="checkbox"] + label{
+    display: inline-block;
+    border: 1px dashed rgba(0,0,0,0.3);
+    color: rgba(0,0,0,0.2);
+}
+input[type="checkbox"]:checked + label{
+    background-color: tomato;
+    color: #fff;
+    }
+
 .btn-generate {
-    border: none;
-    border-radius: 5px;
-    background-color: #fff;
-    padding: 0.5rem 1rem;
-    box-shadow: 3px 3px 5px -1px rgba(0,0,0,0.3);
-    font-size: 1.5rem;
-    cursor: pointer;
+    background-color: #9C27B0;
+    color: #fff;
 }
 
 /* Flash */
@@ -116,4 +137,20 @@ h3 {
     color: #fff;
     font-size: 1.2rem;
     font-weight: bold;
+}
+
+.bound {
+	animation: bound 1s ease-in-out;
+}
+
+@keyframes bound {
+    0% {transform: scale(1)}
+    12.5% {transform: scale(0.89)}
+    25% {transform: scale(1)}
+    37.5% {transform: scale(0.9)}
+    50% {transform: scale(1)}
+    62.5% {transform: scale(0.92)}
+    75% {transform: scale(1)}
+    87.5% {transform: scale(0.97)}
+    100%{transform: scale(1)}
 }

@@ -5,14 +5,18 @@ const articleMsgEls = document.querySelectorAll('.description');
 
 const article = document.getElementById('article-body');
 
-const sectionCount = 5
+let sectionCount = 10;
 
-const descLength = Math.floor(Math.random() * 2) + 1;
+//あまりに膨大な数字が設定された時の閾値
+const descLength = 20;
 
 const descCount = Math.floor(Math.random() * 2) + 1;
 
 const minLength = 1;
-const maxLength = 250;
+
+let maxLength;
+let isEmoji;
+
 
 
 const catchcopy = [
@@ -29,7 +33,7 @@ const catchcopy = [
     "「あること」をするだけで元気になれる",
     "「やりたい」と思ってもできない人へ",
     "努力嫌いな叔父から学んだ",
-    "【悲報】",
+    "それが私の望みです",
 ]
 
 const headlines = [
@@ -162,28 +166,29 @@ const emotion = [
     "笑いました",
 ]
 
-const close = [
+const closeSimple = [
     "。",
-    "…！",
-    "！！",
-    "！？",
+    "…。",
+    "。。。",
+    "！",
 ]
 
 const closeFriendly = [
-    "!!!",
+    "。",
     "...!!",
     "!?",
     "☺️",
     "❤️",
     "☀️",
     "( ・∇・)",
+    "✌️",
+    "❤️❤️",
     "☆",
-    "( ´ ▽ ` )",
     "♪( ´▽｀)",
 ]
 
 
-const discuss = [
+const contexts = [
     "私たちは、とても言い難い事実に直面しました",
     "今では、問題を解決することが最も大切です",
     "このような観点は大切です",
@@ -215,20 +220,26 @@ const discuss = [
 ];
 
 
-createArticle();
+showArticles();
 
 generateBtn.addEventListener('click', () => {
+    showArticles();
+})
+
+function showArticles() {
     article.innerHTML = "";
+    sectionCount = document.getElementById('sectionCount').value;
+    maxLength = Number(document.getElementById('maxLength').value);
+
+    isEmoji = document.getElementById('isEmoji').checked;
     //loopで同じ変数iを使うとバグる？
-    
-    for (k = 0; k <= sectionCount; k++) {
+    for (k = 0; k < sectionCount; k++) {
         createArticle();
     }
-})
+}
 
 
 function createArticle() {
-
 
     const section = document.createElement('div');
     section.classList.add('section');
@@ -244,23 +255,15 @@ function createArticle() {
     section.appendChild(title);
     title.addEventListener('click', () => {
         copyClipboard(articleTitle);
+        title.classList.add('bound');
+        setTimeout(() => {
+            title.classList.remove('bound');
+        },1300)
     })
     //create description
     let articleMsg = "";    
     for(i =0; i< descLength; i++) {
-        addMsg = 
-                settingText(noum[randomindex(noum)])
-                + "。"
-                + settingText(getArrayText(noum))
-                + getArrayText(close)
-                + getArrayText(emotion)
-                + getArrayText(closeFriendly)
-                + conjunction[randomindex(conjunction)]
-                + "、"
-                + discuss[randomindex(discuss)]
-                + getArrayText(closeFriendly)
-                + settingText(noum[randomindex(noum)])
-                + "。";
+        addMsg = makeRandomText(); 
         if(articleMsg.length + addMsg.length > maxLength){
             break;
         }
@@ -276,13 +279,17 @@ function createArticle() {
     section.appendChild(description);
     description.addEventListener('click', () => {
         copyClipboard(articleMsg);
+        description.classList.add('bound');
+        setTimeout(() => {
+            description.classList.remove('bound');
+        },1300)
     })
     article.appendChild(section)
 }
 
 
 
-function getArrayText(ary) {
+function getText(ary) {
     return ary[randomindex(ary)];
 }
 
@@ -291,7 +298,7 @@ function randomindex(ary) {
     return Math.floor(Math.random() * num)
 }
 
-function settingText(noum) {
+function convertOriginal(noum) {
     const data = text[randomindex(text)];
     return data.replace(/xx/g, noum);
 }
@@ -301,7 +308,7 @@ function copyClipboard(text) {
         // ()=>alert("クリップボードにコピーしました"),
         // ()=>alert("クリップボードにコピーできませんでした")
         () => {
-            createFlash('copied:' + text.length);
+            createFlash('copied: ' + text.length + " words");
         }
     );
 }
@@ -314,5 +321,34 @@ function createFlash(text) {
     setTimeout(() => {
         flash.remove()
     }, 1500)
+}
+
+function makeRandomText() {
+    let text = "";
+    switch(Math.floor(Math.random() * 2)) {
+        case 0 :
+            text += getText(conjunction) +"、";
+            break;
+        default:
+            break;
+    }
+    switch(Math.floor(Math.random() * 3)) {
+        case 0:
+            text += convertOriginal(getText(noum));
+            break;
+        case 1:
+            text += getText(contexts);
+            break;
+        case 2:
+            text += getText(emotion);
+            break;
+        default :
+            break;
+    }
+
+    emojiClose = closeFriendly.concat(closeSimple);
+    text += (isEmoji) ? getText(emojiClose) : getText(closeSimple);
+
+    return text;
 }
 

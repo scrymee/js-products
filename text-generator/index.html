@@ -3,37 +3,43 @@
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Title</title>
+        <title>ダミー風データつくるくん</title>
+        <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
         <link rel="stylesheet" href="style.css">
         <script src="script.js" defer></script>
     </head>
     <body>
         <div class="container">
             <div class="result">
-               <!-----------> 
                 <div class="article content">
-                    <p class="">世界の有名な地名ランキング10選</p>
+                    <p class="">ダミー風データつくるくん</p>
                     <div class="article-body" id="article-body">
                     </div>
                 </div>
-               <!-----------> 
             </div>
             <div class="tools">
-                <select name="example">
+                <!-- <select name="example">
                     <option value="サンプル1">コメント</option>
                     <option value="サンプル2">記事風</option>
-                </select>
+                </select> -->
+                <label for="sectionCount">
+                    作成データ数
+                    <input type="number" name="" id="sectionCount" value=10>
+                </label>
                 <label for="maxLength">
                     最大文字数
                     <input type="number" name="" id="maxLength" value=250>
                 </label>
-                <label for="emoji">
-                    <input type="checkbox" name="" id="emoji">
-                    絵文字を含む
-                </label>
-                <p class="caption">Generateボタンをクリックすると自動で文字が出力されます。</p>
-                <p class="caption">見出しや本文をクリックすると、自動でクリップボードにコピーされます。</p>
-                <button class="btn-generate" id="generate">Generate!!</button>
+                <div class="emoji">
+                    <input type="checkbox" name="is-emoji" id="isEmoji">
+                    <label for="isEmoji" class="btn">
+                        絵文字を含む
+                    </label>
+                </div>
+                <button class="btn-generate btn" id="generate">作成する</button>
+                <p class="caption">1. 「作成する」ボタンをクリックすると自動で文字が出力されます。</p>
+                <span class="caption">
+                    2.見出しや本文をクリックすると、自動でクリップボードにコピーされます。</span>
             </div>
 
         </div>
