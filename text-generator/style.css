@@ -1,0 +1,69 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+@import url('https://fonts.googleapis.com/css2?family=Kosugi+Maru&display=swap');
+
+* {
+    box-sizing: border-box;
+
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    font-family: "Poppins", sans-serif, "Kosugi Maru";
+    background-attachment: fixed;
+    background-color: #eec0c6;
+    background-image: linear-gradient(315deg, #eec0c6 0%, #7ee8fa 74%);
+}
+
+.container {
+    padding: 1rem;
+    display: flex;
+    flex-direction: row;
+}
+.result {
+    padding: 0 3rem;
+
+}
+
+.content {
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px -1px rgba(0,0,0,0.3);
+    padding: 1rem;
+    margin: 1rem 0;
+}
+
+.comment .title {
+    font-size: 1.2rem;
+    font-weight: bold;
+    animation: 3s ease-in;
+}
+
+.comment .description {
+    color: #888;
+}
+
+.tools {
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+
+}
+
+.tools * {
+    margin: 1rem 0;
+}
+
+.btn-generate {
+    border: none;
+    border-radius: 5px;
+    background-color: #fff;
+    padding: 0.5rem 1rem;
+    box-shadow: 3px 3px 5px -1px rgba(0,0,0,0.3);
+    font-size: 1.5rem;
+    cursor: pointer;
+}
