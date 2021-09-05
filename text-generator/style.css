@@ -41,27 +41,31 @@ body {
     flex-direction: row;
 }
 .result {
-    width: 70%;
+    width: 80%;
     padding: 1rem 3rem;
 }
 
 /* Result Common method */
 
+.logo {
+    width: 70%!important;
+}
+
 .content {
-    background-color: #fff;
+    background-color: #f7f7f7;
     border-radius: 10px;
     box-shadow: 3px 3px 5px -1px rgba(0,0,0,0.3);
     padding: 2rem 3rem;
     margin: 1rem 0;
 }
 
-.content * {
+.title, .description {
     cursor: pointer;
 }
 
 h3 {
     margin: 0;
-    font-size: 1.7rem;
+    font-size: 1.8rem;
     line-height: 2.2rem;
 }
 
@@ -77,14 +81,26 @@ h3 {
 }
 
 .description {
-    font-size: 1.2rem;
-    line-height: 2rem;
+    font-size: 1rem;
+    line-height: 1.8rem;
     color: #333;
     margin-bottom: 3rem;
 }
 
+
+.article-header , .article-footer {
+    font-size: 0.8rem;
+    color: #555;
+}
+
+.article-footer {
+    text-align: right;
+}
+
+
+
 .tools {
-    width: 30%;
+    width: 20%;
     position: fixed;
     top: 0;
     right: 0;
@@ -92,17 +108,20 @@ h3 {
     flex-direction: column;
     align-items: center;
     padding: 1rem 2rem;
-    font-size: 1.2rem;
+    font-size: 0.8rem;
 }
 
 .tools * {
-    margin: 1rem 0;
+    margin: 0.5rem 0;
     width: 100%;
 }
 
 .tools select , .tools input {
     padding: 1rem;
     font-size: 1.2rem;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 3px 3px 10px -1px rgba(0,0,0,0.3);
 }
 
 .tools input[type="checkbox"] {
@@ -123,8 +142,8 @@ input[type="checkbox"]:checked + label{
 .btn-generate {
     background-color: #9C27B0;
     color: #fff;
-    padding: 2.5rem 0;
-    font-size: 2rem;
+    padding: 2rem 0;
+    font-size: 1.5rem;
     font-weight: bold;
 }
 
