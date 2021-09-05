@@ -1,5 +1,6 @@
 
 const generateBtn = document.getElementById('generate');
+const smGenerateBtn = document.getElementById('sm-generate');
 const articleTitleEls = document.querySelectorAll('.title');
 const articleMsgEls = document.querySelectorAll('.description');
 
@@ -223,6 +224,9 @@ const contexts = [
 showArticles();
 
 generateBtn.addEventListener('click', () => {
+    showArticles();
+})
+smGenerateBtn.addEventListener('click', () => {
     showArticles();
 })
 

@@ -6,6 +6,8 @@
 }
 
 body {
+    margin: 0;
+    padding: 0;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -45,7 +47,7 @@ body {
     justify-content: center;
     align-items: center;
     width: 80vw;
-    padding: 2rem;
+    padding: 0.5rem;
 }
 
 /* Result Common method */
@@ -110,9 +112,31 @@ h3 {
     padding: 1rem 2rem;
     font-size: 0.8rem;
 }
+
+.sm-tools {
+    position: fixed;
+    bottom: 10px;
+    right: 10px;
+    width: 4rem;
+    height: 4rem;
+    font-size: 1.5rem;
+    text-align: center;
+    border: none;
+    border-radius: 50%;
+    box-shadow: 3px 3px 10px -1px rgba(0,0,0,0.3);
+    background-color: #9C27B0;
+    padding: 1rem;
+    color: #fff;
+    cursor: pointer;
+    display: none;
+}
+
 @media (max-width: 767px) {
     .tools {
         display: none;
+    }
+    .sm-tools {
+        display: block;
     }
 }
 
