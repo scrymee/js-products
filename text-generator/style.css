@@ -2,6 +2,7 @@
 
 * {
     box-sizing: border-box;
+    font-size: 62.5%;
 
 }
 
@@ -41,8 +42,7 @@ body {
     flex-direction: row;
 }
 .result {
-    width: 80%;
-    padding: 1rem 6rem;
+    padding: 1rem;
 }
 
 /* Result Common method */
@@ -100,15 +100,16 @@ h3 {
 
 
 .tools {
-    width: 20%;
-    position: fixed;
-    top: 0;
-    right: 0;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 1rem 2rem;
     font-size: 0.8rem;
+}
+@media (max-width: 767px) {
+    .tools {
+        display: none;
+    }
 }
 
 .tools * {
