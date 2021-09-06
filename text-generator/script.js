@@ -375,7 +375,6 @@ let scrollHeight = Math.max(
   
       let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
   
-      // iosはバウンドするので、無難に `>=` にする
       if (scrollTop >= pageMostBottom) {
           const sectionCount = document.querySelectorAll('.section').length;
           setTimeout(() => {
