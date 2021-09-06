@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=M+PLUS+Rounded+1c&display=swap');
 
+
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&display=swap');
+
 * {
     box-sizing: border-box;
 
@@ -44,6 +47,7 @@ body {
 }
 .result {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     width: 80vw;
@@ -61,7 +65,7 @@ body {
     background-color: #f7f7f7;
     border-radius: 10px;
     box-shadow: 3px 3px 5px -1px rgba(0,0,0,0.3);
-    padding: 2rem 3rem;
+    padding: 1rem 3rem;
     margin: 1rem 0;
 }
 
@@ -69,7 +73,16 @@ body {
     cursor: pointer;
 }
 
-h3 {
+.article-header {
+    font-size: 5.5rem;
+    line-height: 5.5rem;
+    margin-bottom: 1.3rem;
+    color: royalblue;
+    font-family: 'Pacifico', cursive;
+
+}
+
+.title {
     margin: 0;
     font-size: 1.8rem;
     line-height: 2.2rem;
@@ -94,7 +107,7 @@ h3 {
 }
 
 
-.article-header , .article-footer {
+.article-footer {
     font-size: 0.8rem;
     color: #555;
 }

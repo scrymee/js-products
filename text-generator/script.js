@@ -4,7 +4,7 @@ const smGenerateBtn = document.getElementById('sm-generate');
 const articleTitleEls = document.querySelectorAll('.title');
 const articleMsgEls = document.querySelectorAll('.description');
 
-const article = document.getElementById('article-body');
+const result = document.getElementById('result');
 
 let sectionCount = 10;
 
@@ -231,40 +231,36 @@ smGenerateBtn.addEventListener('click', () => {
 })
 
 function showArticles() {
-    article.innerHTML = "";
+    result.innerHTML = "";
     sectionCount = document.getElementById('sectionCount').value;
+    if(sectionCount > 10) sectionCount = 10;
     maxLength = Number(document.getElementById('maxLength').value);
 
     isEmoji = document.getElementById('isEmoji').checked;
     //loopで同じ変数iを使うとバグる？
-    for (k = 0; k < sectionCount; k++) {
-        createArticle();
+    for (k = 1; k <= sectionCount; k++) {
+        createArticle(k);
     }
 }
 
 
-function createArticle() {
+function createArticle(index = 0) {
 
     const section = document.createElement('div');
     section.classList.add('section');
-    //create Title
-    const articleTitle = catchcopy[randomindex(catchcopy)] +"、"+ noum[randomindex(noum)] + headlines[randomindex(headlines)]; 
-    const title = document.createElement('h3');
-    title.classList.add('title');
-    title.classList.add('fade')
-    setTimeout(() => {
-        title.classList.remove('fade')
-    }, 500)
-    title.innerText = articleTitle;
+    section.classList.add('content');
+
+    const header = document.createElement('div');
+    header.classList.add('article-header');
+    header.innerHTML = `#${index}`;
+    section.appendChild(header);
+
+    const titleMsg = getText(catchcopy) +"、"+ getText(noum) + getText(headlines); 
+    const titleEl = document.createElement('h3');
+    titleEl.classList.add('title');
+    const title = createEl(titleEl, titleMsg);
     section.appendChild(title);
-    title.addEventListener('click', () => {
-        copyClipboard(articleTitle);
-        title.classList.add('bound');
-        setTimeout(() => {
-            title.classList.remove('bound');
-        },1300)
-    })
-    //create description
+
     let articleMsg = "";    
     for(i =0; i< descLength; i++) {
         addMsg = makeRandomText(); 
@@ -272,25 +268,36 @@ function createArticle() {
             break;
         }
         articleMsg += addMsg;
-        }
-    const description = document.createElement('p');
-    description.classList.add('description');
-    description.classList.add('fade')
-    setTimeout(() => {
-        description.classList.remove('fade')
-    }, 500)
-    description.innerText = articleMsg;
+    }
+    const descEl = document.createElement('p');
+    descEl.classList.add('description');
+    const description = createEl(descEl, articleMsg);
     section.appendChild(description);
-    description.addEventListener('click', () => {
-        copyClipboard(articleMsg);
-        description.classList.add('bound');
-        setTimeout(() => {
-            description.classList.remove('bound');
-        },1300)
-    })
-    article.appendChild(section)
+
+    const footer = document.createElement('p');
+    footer.classList.add('article-footer');
+    footer.innerText = `2021/09/05 ©︎souq`;
+
+    section.appendChild(footer);
+    result.appendChild(section)
 }
 
+function createEl(el, text = '') {
+    el.classList.add('fade')
+    setTimeout(() => {
+        el.classList.remove('fade')
+    }, 500)
+    el.innerText = text;
+    el.addEventListener('click', () => {
+        copyClipboard(articleTitle);
+        el.classList.add('bound');
+        setTimeout(() => {
+            el.classList.remove('bound');
+        },1300)
+    })
+    return el;
+
+}
 
 
 function getText(ary) {
