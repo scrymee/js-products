@@ -289,7 +289,7 @@ function createEl(el, text = '') {
     }, 500)
     el.innerText = text;
     el.addEventListener('click', () => {
-        copyClipboard(articleTitle);
+        copyClipboard(text);
         el.classList.add('bound');
         setTimeout(() => {
             el.classList.remove('bound');
@@ -363,3 +363,24 @@ function makeRandomText() {
     return text;
 }
 
+  window.addEventListener('scroll', () => {
+let scrollHeight = Math.max(
+    document.body.scrollHeight, document.documentElement.scrollHeight,
+    document.body.offsetHeight, document.documentElement.offsetHeight,
+    document.body.clientHeight, document.documentElement.clientHeight
+  );
+  
+  // 一番下までスクロールした時の数値を取得(window.innerHeight分(画面表示領域分)はスクロールをしないため引く)
+  let pageMostBottom = scrollHeight - window.innerHeight;
+  
+      let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+  
+      // iosはバウンドするので、無難に `>=` にする
+      if (scrollTop >= pageMostBottom) {
+          const sectionCount = document.querySelectorAll('.section').length;
+          setTimeout(() => {
+            createArticle(sectionCount + 1);
+          },500)
+
+      }
+  });
